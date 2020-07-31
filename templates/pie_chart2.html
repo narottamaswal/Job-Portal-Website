@@ -1,0 +1,358 @@
+{% load static %}
+<html lang="en">
+<head>
+<title>GET LATEST COMPANIES INFO</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+<style>
+.search
+{
+    opacity:0.8;
+    right: 1;
+    margin: 15px ;
+    max-width: 100%;
+    object-fit: contain;
+    max-height: 100%;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}.search2
+{
+height:9000px;
+    opacity:0.8;
+    right: 1;
+    margin: 15px ;
+    max-width: 100%;
+    object-fit: contain;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+@media screen and (min-width: 500px){
+    .search,{
+     max-width: 100%;
+     height: auto;
+   }
+}@media screen and (min-width: 500px){
+    .search2{
+     max-width: 100%;
+     height: auto;
+   }
+}
+
+
+body, html {  margin: 0px ;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+input[type=text]{
+width:24%;padding: 10px;
+  margin: 20px 0 22px 0;
+  background: 	white;
+    border:1px solid black;
+
+}
+
+select[name=jobtype],select[name=dateposted],select[name=salary],select[name=experience],select[name=noofjobs] {
+  width: 13%;
+  padding: 15px;
+  margin: 10px 0 22px 0;
+   border:1px solid black;
+ background-color: white;
+}
+
+input[type=text]:focus,  select[name=jobtype]:focus,select[name=dateposted]:focus,select[name=noofjobs]:focus,select[name=salary]:focus,select[name=experience]:focus {
+  background-color: white;
+  color:black;
+  outline: 1 black;
+  border:1px solid black;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+}
+.btn:hover{
+opacity:10;
+}
+.button:hover{
+opacity:1;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: black
+;
+}
+.topnav a.a1 {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a.a2 {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a:hover {
+  background-color: white;
+  color: black;
+
+}
+.demo {
+    width:1330px;
+    height:2040px;
+    position: absolute;
+    right: 1;
+    margin: 270px ;
+    margin-left: 700px ;
+    margin-right: 10px ;
+    max-width: 2050px;
+    max-height: 3400px;
+    padding: 46px;
+    opacity:1;
+}.demo3 {
+    width:10330px;
+    height:1340px;
+    position: absolute;
+    right: 1;
+    margin: 270px ;
+    margin-left: 700px ;
+    margin-right: 10px ;
+    max-width: 2050px;
+    max-height: 1400px;
+    padding: 46px;
+    opacity:1;
+}
+.demo2{
+    opacity:0.8;
+    width:1120px;
+    height:260px;
+    margin: 15px ;
+    margin-left: 50px ;
+    margin-right: 200px ;
+    max-width: 2090px;
+    max-height: 360px;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle,.search {
+    width: 100%;
+  }
+
+
+}body {
+  background-image: url("{% static 'images/info.png' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}body, html {  margin: 0px ;
+  font-family: Arial, Helvetica, sans-serif;
+}
+p{
+color:black;
+}
+h2 {
+  font-size: 30px;
+}
+h2:hover {
+color:green;}
+h3 {
+  font-size: 20px;
+}
+.imga{
+ position: absolute;
+  right: 200px;
+}.btn2 {
+  background-color: red;
+  color: white;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius:20px;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+  position: absolute;
+  right: 200px;
+}
+.btn:hover{
+opacity:1;
+}
+.btn2 {
+  background-color: red;
+  color: white;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius:20px;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+  position: absolute;
+  right: 200px;
+}
+.btn:hover{
+opacity:1;
+}
+</style>
+
+</head>
+<body>
+<div class="topnav">
+    {% if user.is_authenticated %}
+    {% if user.is_active %}
+  <a class="a1" href="/search">Search</a>
+  <a class="a1" href="/jobsforyou">Jobs For You</a>
+  <a class="a1" href="/getsavedjobs">Get Saved Jobs</a>
+  <a class="a1" href="/info">Info</a>
+  <a class="a2" href="/logout">Logout</a>
+  <a class="a2" href="/profile">Profile</a>
+  <a class="a2" >Welcome {{user.first_name}}&nbsp;<img align="center" src="{{ user.profile.image.url }}" style="margin-left: auto;
+  margin-right: auto;width:35px;height:25px;"></a>
+ {% endif %}
+    {% else %}
+ <a class="a1" href="#">Home</a>
+ <a class="a1" href="#">About</a>
+ <a class="a1" href="#">Contact</a>
+ <a class="a2" href="#">Login</a>
+ <a class="a2" href="#">Register</a>
+         {% endif %}
+  </div>
+
+<div class="search">
+     <h1>Get Job Info By Jobtitle</h1>
+    <form method="POST" action="/info">
+            {% csrf_token%}
+            {{infosearchform.as_p}}
+            <button type="submit">SEARCH</button>
+    </form>
+</div><div class="search2"><h2>Min Sal: {{minsal}}</h2><br>
+    <h2>Max Sal:- {{maxsal}}</h2>
+    <h2 ALIGN="CENTER">No. Of Jobs Posted on Portals</h2>
+
+    <canvas id="pie-chart"></canvas><br>
+    <h2 ALIGN="CENTER">No. Of Jobs For Specific Location</h2>
+
+    <canvas id="container1"></canvas><br>
+    <h2 ALIGN="CENTER">No. Of Job Openings From  A Company</h2>
+
+    <canvas id="container2"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#ff0000', '#ffff00', '#00ff00', '#00ffbf','#0000ff','#bf00ff','#80ff00','#ff4000','#00bfff','#40ff00'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+      aspectRatio:4,
+        responsive: true,
+      }
+    };
+    var locationwiseopenings = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ openingsloc|safe }},
+          backgroundColor: [
+            '#ff0000', '#ffff00', '#00ff00', '#00ffbf','#0000ff','#bf00ff','#80ff00','#ff4000','#00bfff','#40ff00'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ locations|safe }}
+      },
+      options: {
+      aspectRatio:4,
+        responsive: true,
+      }
+    };
+    var company_openings = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ openings|safe }},
+          backgroundColor: [
+            '#ff0000', '#ffff00', '#00ff00', '#00ffbf','#0000ff','#bf00ff','#80ff00','#ff4000','#00bfff','#40ff00'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ companies|safe }}
+      },
+      options: {
+      aspectRatio:4,
+        responsive: true,
+      }
+    };
+    var config1= {
+      type: 'bar',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#ff0000', '#ffff00', '#00ff00', '#00ffbf','#0000ff','#bf00ff','#80ff00','#ff4000','#00bfff','#40ff00'
+          ],
+          labels: {{ labels|safe }}
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {barThickness:1,
+        responsive: true,aspectRatio:3,
+         scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+      }
+    };
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+
+       var ctx1 = document.getElementById('container1').getContext('2d');
+      window.myPie = new Chart(ctx1, locationwiseopenings);
+
+      var ctx2 = document.getElementById('container2').getContext('2d');
+      window.myPie = new Chart(ctx2, company_openings);
+    };
+  </script></div>
+</body>
+</html>

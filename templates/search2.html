@@ -1,0 +1,360 @@
+{% load static %}
+<html lang="en">
+<head>
+<title>{% block title %}JOBS{% endblock %}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+<style>
+.search
+{
+opacity:0.8;
+    right: 1;
+    margin: 15px ;
+    max-width: 100%;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+@media screen and (min-width: 500px){
+    .search{
+     max-width: 100%;
+   }
+   .search3
+{opacity:0.8;
+
+height:9800px;
+width:60%;
+    margin: 15px ;
+
+float:left;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+@media screen and (min-width: 500px){
+    .search3{
+    max-width: 47%;
+    max-height: 5300px;
+   }.search4
+{
+float:right;
+opacity:0.8;
+
+height:1200px;
+width:60%;
+    margin: 15px ;
+
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+@media screen and (min-width: 500px){
+    .search4{
+    max-width: 45%;
+    max-height: 100%;;
+   }
+}.search2
+{
+opacity:0.8;
+width:1320px;
+height:4000px;
+  position: absolute;
+  right: 1;
+  margin: 15px ;
+  margin-left: 40px ;
+  margin-right: 12px ;
+  padding: 20px;
+  background-color:  white;
+    border:1px solid black;
+border-radius:20px;
+}
+@media screen and (max-width: 600px) {
+  .search2 {
+    width: 100%;
+    height: 100%;
+  }
+body, html {  margin: 0px ;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+input[type=text]{
+width:44%;padding: 10px;
+  margin: 20px 0 22px 0;
+  background: 	white;
+    border:1px solid black;
+
+}textarea[name="form-0-projectdescription"]{
+width:50%;padding: 10px;
+  margin: 20px 0 22px 0;
+  background: 	white;
+    border:1px solid black;
+
+}
+
+select[name=jobtype],select[name=dateposted],select[name=salary],select[name=experience],select[name=noofjobs] {
+  width: 13%;
+  padding: 15px;
+  margin: 10px 0 22px 0;
+   border:1px solid black;
+ background-color: white;
+}
+
+input[type=text]:focus,input[type=email],  select[name=jobtype]:focus,select[name=dateposted]:focus,select[name=noofjobs]:focus,select[name=salary]:focus,select[name=experience]:focus {
+  background-color: white;
+  color:black;
+  outline: 1 black;
+  border:1px solid black;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+}
+.btn:hover{
+opacity:10;
+}
+.button:hover{
+opacity:1;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+.topnav a.a1 {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a.a2 {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a:hover {
+  background-color: white;
+  color: black;
+}
+.demo {
+    width:1330px;
+    height:1340px;
+    position: absolute;
+    right: 1;
+    margin: 270px ;
+    margin-left: 700px ;
+    margin-right: 10px ;
+    max-width: 2050px;
+    max-height: 1400px;
+    padding: 46px;
+    opacity:1;  background-color:  white;
+
+}.demo3 {
+    width:10330px;
+    height:1340px;
+    position: absolute;
+    right: 1;
+    margin: 270px ;
+    margin-left: 700px ;
+    margin-right: 10px ;
+    max-width: 2050px;
+    max-height: 1400px;  background-color:  white;
+
+    padding: 46px;
+    opacity:1;
+}
+.demo2{
+    opacity:0.8;
+    width:1120px;
+    height:260px;
+    margin: 15px ;
+    margin-left: 50px ;
+    margin-right: 200px ;
+    max-width: 2090px;
+    max-height: 360px;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+body {
+  background-image: url("{% static 'images/bg3.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+p{
+color:black;
+}
+h2 {
+  font-size: 30px;
+}
+h2:hover {
+color:green;}
+h3 {
+  font-size: 20px;
+}
+.imga{
+ position: absolute;
+  right: 130px;
+}.imga2{
+opacity:0.8;
+ position: absolute;
+border:1px solid black;
+}
+.btn:hover{
+opacity:1;
+}
+.btn2 {
+  background-color: red;
+  color: white;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius:20px;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+  position: absolute;
+  right: 130px;
+}.alreadysavedbtn{
+ background-color: blue;
+  color: white;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius:20px;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+  position: absolute;
+  right: 130px;
+}
+.btn2:hover{
+opacity:1;
+}
+</style>
+
+</head>
+<body>
+<div class="topnav">
+    {% if user.is_authenticated %}
+    {% if user.is_active %}
+  <a class="a1" href="/search">Search</a>
+  <a class="a1" href="/jobsforyou">Jobs For You</a>
+  <a class="a1" href="/getsavedjobs">Get Saved Jobs</a>
+  <a class="a1" href="/info">Info</a>
+  <a class="a1" href="/createyourresume">Create Yourr Resume</a>
+  <a class="a2" href="/logout">Logout</a>
+  <a class="a2" href="/profile">Profile</a>
+  <a class="a2" >Welcome {{user.first_name}}&nbsp;<img align="center" src="{{ user.profile.image.url }}" style="margin-left: auto;
+  margin-right: auto;width:35px;height:25px;"></a>
+ {% endif %}
+    {% else %}
+ <a class="a1" href="#">Home</a>
+ <a class="a1" href="#">About</a>
+ <a class="a1" href="#">Contact</a>
+ <a class="a2" href="#">Login</a>
+ <a class="a2" href="#">Register</a>
+         {% endif %}
+  </div>
+
+
+<div class="search">
+    {% block form %}
+{% if user.is_authenticated %}
+    <form method="POST" action="/result">
+    {% csrf_token %}
+     {{ jobsearchform.jobtitle}}&nbsp;
+    {{ jobsearchform.location }}&nbsp;
+    {{ jobsearchform.companyname }}&nbsp;
+    {{ jobsearchform.skills }}<br>
+    <label><b>Experience</b></label>
+    {{ jobsearchform.experience }}&nbsp;
+        <label><b>Salary</b></label>
+    {{ jobsearchform.salary }}&nbsp;
+        <label><b>Jobtype</b></label>
+    {{ jobsearchform.jobtype }} &nbsp;   <label><b>Date posted</b></label>
+    {{ jobsearchform.dateposted }}&nbsp;
+        <label><b>No of jobs </b></label>
+    {{ jobsearchform.noofjobs }}<br>
+    <button class="btn" type="submit">SEARCH</button>
+    </form>
+    {% endif %}
+    {% endblock %}
+    </div>
+
+{% block col2 %}{% endblock %}
+
+
+</div>
+</body>
+</html>
+<!--.search
+{
+height:200%;
+    opacity:0.8;
+    right: 1;
+    margin: 15px ;
+    max-width: 100%;
+    object-fit: contain;
+    max-height: 100%;
+    padding: 20px;
+    background-color:  white;
+    border:1px solid black;
+    border-radius:20px;
+}
+@media screen and (min-width: 500px){
+    .search{
+     max-width: 100%;
+     height: auto;
+   }
+}.search2
+{
+opacity:0.8;
+width:1320px;
+height:1000px;
+  position: absolute;
+  right: 1;
+  margin: 15px ;
+  margin-left: 40px ;
+  margin-right: 12px ;
+  max-width: 1460px;
+  max-height: 360px;
+  padding: 20px;
+  background-color:  white;
+    border:1px solid black;
+border-radius:20px;
+}-->

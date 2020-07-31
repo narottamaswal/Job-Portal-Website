@@ -1,0 +1,57 @@
+{% load static %}
+<html lang="en">
+<head>
+<title>{% block title %}JOBSs{% endblock %}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+<div class="topnav">
+    {% if user.is_authenticated %}
+    {% if user.is_active %}
+  <a class="a1" href="/search">Search</a>
+  <a class="a1" href="/jobsforyou">Jobs For You</a>
+  <a class="a1" href="/getsavedjobs">Get Saved Jobs</a>
+  <a class="a1" href="/info">Info</a>
+  <a class="a1" href="/createyourresume">Create Yourr Resume</a>
+  <a class="a2" href="/logout">Logout</a>
+  <a class="a2" href="/profile">Profile</a>
+  <a class="a2" >Welcome {{user.first_name}}&nbsp;<img align="center" src="{{ user.profile.image.url }}" style="margin-left: auto;
+  margin-right: auto;width:35px;height:25px;"></a>
+ {% endif %}
+    {% else %}
+ <a class="a1" href="#">Home</a>
+ <a class="a1" href="#">About</a>
+ <a class="a1" href="#">Contact</a>
+ <a class="a2" href="#">Login</a>
+ <a class="a2" href="#">Register</a>
+         {% endif %}
+  </div>
+
+
+<div class="search">
+    {% block form %}
+<h1 align="center"> JOBS SEARCH WEBSITE</h1><BR><BR><BR><BR>
+  <div class="d1">
+<img align="center" style="margin-left: auto; margin-right: auto;width:100x;height:220px;" src="{% static 'images/admin4.jpg' %}">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img align="center" style="margin-left: auto; margin-right: auto;width:210px;height:220px;" src="{% static 'images/loginimage.jpg' %}">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img align="center" style="margin-left: auto; margin-right: auto;width:210px;height:220px;" src="{% static 'images/registerimage.jpg' %}">
+  <BR> <a href="/register" ><button type="button" class="loginbtn3">REGISTRATION</button></a>
+<a href="/login" ><button type="button" class="loginbtn">LOGIN</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<a href="/admin" ><button type="button" class="loginbtn2">LOGIN AS ADMIN</button></a>
+</div><BR><BR>
+
+    {% endblock %}
+
+
+{% block col2 %}{% endblock %}
+
+
+</div>
+</body>
+</html>

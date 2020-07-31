@@ -1,0 +1,16 @@
+{% extends 'search.html' %}
+{% block title %}speciific job{% endblock %}
+{% load static %}
+{% block form %}{% endblock %}
+{% block col2 %}
+<div class="demo2">
+  <a href="{{url}}"><b>title</b>  {{jobtitle}}</a><br>
+   <img src="{% static 'images/a.png' %}" height="25" width="25"/>{{date}}<br>
+    <img src="{% static 'images/coin_salary.jpg' %}" height="25" width="25"/>{{minsal}}-{{maxsal}}<br>
+    <img src="{% static 'images/location.png' %}" height="25" width="25"/>{{location}}<br>
+   <img src="{% static 'images/exp.png' %}" height="25" width="25"/>{{minexp}}-{{maxexp}}<br>
+   <img src="{% static 'images/exp.png' %}" height="25" width="25"/>{{companyname}}<br>
+   {{jobdescription|safe}}
+    <a href="savedjobs/{{id}}">Save Job</a>
+{% endblock %}
+</div>

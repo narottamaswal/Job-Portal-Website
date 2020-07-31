@@ -1,0 +1,117 @@
+{% load static %}
+<html lang="en">
+<head>
+{% block title %}{% endblock %}
+    {% block head %}
+<meta charset="utf-8">    <link rel="stylesheet" type="text/css" href="{% static 'css/dv.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+input[type=text], select[name=jobtype],select[name=dateposted],select[name=salary],select[name=experience],select[name=noofjobs] {
+  width: 12%;
+  padding: 7px;
+  margin: 10px 0 17px 0;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus,  select[name=jobtype]:focus,select[name=dateposted]:focus,select[name=noofjobs]:focus,select[name=salary]:focus,select[name=experience]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+button[type=submit]{
+color:grey;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a.a1 {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a.a2 {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.column {
+  float: left;
+  padding: 10px;
+}
+.column.side {
+  width: 20%;
+}
+.column.middle {
+  width: 50%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+</style>
+    {% endblock %}
+</head>
+<body>
+
+
+
+<div class="topnav">
+  <a class="a1" href="#">Search</a>
+  <a class="a1" href="#">Jobs For You</a>
+  <a class="a1" href="#">Get Saved Jobs</a>
+  <a class="a2" href="#">Logout</a>
+  <a class="a2" href="#">Profile</a>
+  <a class="a2" href="#">Welcome User</a>
+    <p align="center" style="color:white;" ><b>JOBS FOR ALL </b></p>
+
+
+{% block content3 %}
+{% endblock %}
+<div class="row">
+  <div class="column side">
+  {% block sidecol1 %}
+
+{% endblock %}
+  </div>
+
+  <div class="column middle">
+  {% block midcol %}
+
+{% endblock %}</div>
+
+  <div class="column side">
+    {% block sidecol2 %}
+
+{% endblock %}
+  </div>
+</div>
+{% block content2 %}
+
+{% endblock %}
+</body>
+</html>

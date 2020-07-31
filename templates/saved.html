@@ -1,0 +1,120 @@
+{% extends 'search.html' %}
+{% block title %}saved jobs{% endblock %}
+{% load static %}
+
+{% block form %}
+<h1>Saved Jobs</h1>
+<form method="POST" action="/getsavedjobs">
+        {% csrf_token%}
+        {{savedjobssearch.as_p}}
+        <button type="submit">SEARCH</button>
+</form>
+{% endblock %}
+
+    {{message}}
+{% block col2 %}
+      {% for companyname,skills,jobportal,jobtype,urls, jobtitle, maxsal, minsal,maxexp, minexp,location,date,jobid in zipe2 %}<div class="search">
+    <h2> <b><a href="specificjob/{{jobid}}"> {{jobtitle}}</a></b>
+        {% ifequal jobportal "Indeed" %}
+        <img class="imga" src="{% static 'images/indeedlogo.png' %}" height="55" width="135"/> {% endifequal %}
+         {% ifequal jobportal "Linkedin" %}
+        <img class="imga" src="{% static 'images/linkedinlogo.png' %}" height="55" width="135"/> {% endifequal %}
+         {% ifequal jobportal "Freshersworld" %}
+        <img class="imga" src="{% static 'images/freshersworld.png' %}" height="55" width="135"/> {% endifequal %}
+         {% ifequal jobportal "Shine" %}
+        <img class="imga" src="{% static 'images/shinelogo.png' %}" height="55" width="135"/> {% endifequal %}
+        {% ifequal jobportal "Times Jobs" %}
+        <img class="imga" src="{% static 'images/timesjobslogo.png' %}" height="55" width="135"/> {% endifequal %}
+        {% ifequal jobportal "Monster" %}
+        <img class="imga" src="{% static 'images/monsterlogo.png' %}" height="55" width="135"/> {% endifequal %}
+    </h2>
+    <h3><b> {{companyname}} <br></b></h3>
+
+
+   <img src="{% static 'images/a.png' %}" height="25" width="25"/>   &nbsp;{{date}}<br>
+     <img src="{% static 'images/coin_salary.jpg' %}" height="25" width="25"/>
+    {% if not maxsal %}
+    &nbsp;Salary Not Defined<br>
+    {% else %}
+        &nbsp;{{minsal}} - {{ maxsal }} a year<br>
+    {% endif%}
+    <img src="{% static 'images/location.png' %}" height="25" width="25"/>   &nbsp;{{location}}<br>
+   <img src="{% static 'images/exp.png' %}" height="25" width="25"/>   &nbsp;{{minexp}} - {{maxexp}} years <br>
+     <img src="{% static 'images/download.png' %}" height="25" width="25"/>
+    {% ifequal skills "[]"%}
+         &nbsp;Skills Not Defined
+    {% else %}
+  &nbsp;{{skills}}
+    {% endifequal %}
+
+    <a href="/delete-{{jobid}}"><button class="btn2">DELETE</button></a><br>
+
+   <img src="{% static 'images/worktime.png' %}" height="20" width="23"/> &nbsp; {{jobtype}}<br>
+
+</div>
+{% endfor %}
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+{% for b in users %}
+<div class="search">
+    <b><a href="specificjob/{{b.id}}"> {{b.jobtitle}}</a></b><br>
+    <b>{{b.companyname}}<br></b>
+
+   <img src="{% static 'images/a.png' %}" height="25" width="25"/>  {{b.date}}<br>
+    <img src="{% static 'images/coin_salary.jpg' %}" height="25" width="25"/>  {{b.minsal}}-{{b.maxsal}} a year<br>
+    <img src="{% static 'images/location.png' %}" height="25" width="25"/>  {{b.location}}<br>
+   <img src="{% static 'images/exp.png' %}" height="25" width="25"/>  {{b.minexp}}-{{b.maxexp}} years <br>
+   <img src="{% static 'images/download.png' %}" height="25" width="25"/>  {{b.skills}}<br>
+ jobtype  {{b.jobtype}}<br>
+
+
+
+</div>
+<br>
+{% endfor %}
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}

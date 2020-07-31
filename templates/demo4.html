@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}result{% endblock %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+    <form method="POST" action="/result">
+    {% csrf_token %}
+        <label><b>Jobtitle</b></label>
+     {{ jobsearchform.jobtitle}}
+    <label><b>Experience</b></label>
+    {{ jobsearchform.experience }}
+        <label><b>Salary</b></label>
+    {{ jobsearchform.salary }}
+        <label><b>Location</b></label>
+    {{ jobsearchform.location }}
+        <label><b>Date posted</b></label>
+    {{ jobsearchform.dateposted }}
+        <label><b>Companyname</b></label>
+    {{ jobsearchform.companyname }}
+        <label><b>Skills</b></label>
+    {{ jobsearchform.skills }}
+        <label><b>Jobtype</b></label>
+    {{ jobsearchform.jobtype }}
+         <label><b>No of jobs </b></label>
+    {{ jobsearchform.noofjobs }}
+    <button type="submit">SEARCHH</button>
+    </form>
+{% if messages %}
+{% for message in messages%}
+<p><b>{{message.tags}}</b>{{ message }}</p><br>
+{% endfor %}
+{% endif%}
+{% endif %}
+{% endblock %}
+<!--{% block content2 %}{% endblock %}-->
+{% block content3 %}
+<div class="row">
+  <div class="column side">
+    <h2>Side</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+  </div>
+
+  <div class="column middle">
+    <h2>Main Content</h2>
+      {% for b in users %}<div>
+   <h2> <b><a href="specificjob/{{b.id}}"> {{b.jobtitle}}</a></b><br></h2>
+  <h3> <b>{{b.companyname}}<br></b></h3>
+
+   <img src="{% static 'images/a.png' %}" height="25" width="25"/>  {{b.date}}<br>
+    <img src="{% static 'images/coin_salary.jpg' %}" height="25" width="25"/>  {{b.minsal}} - {{ b.maxsal }} a year<br>
+    <img src="{% static 'images/location.png' %}" height="25" width="25"/>  {{b.location}}<br>
+   <img src="{% static 'images/exp.png' %}" height="25" width="25"/>  {{b.minexp}} - {{b.maxexp}} years <br>
+   <img src="{% static 'images/download.png' %}" height="25" width="25"/>  {{b.skills}}<br>
+ jobtype   {{b.jobtype}}
+
+  </div>  </div>
+{% endfor %}
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+  </div>
+
+  <div class="column side">
+    <h2>Side</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+  </div>
+</div>
+
+
+{% endblock %}

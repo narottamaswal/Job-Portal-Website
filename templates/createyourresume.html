@@ -1,0 +1,18 @@
+{% extends 'search.html' %}
+{% load static %}
+{% block form %}<h2 align="center">CREATE YOUR RESUME</h2>{% endblock %}
+{% block col2 %}
+<div class="search3">
+    <form method="POST" action="/createyourresume">
+        {% csrf_token %}
+   <h2><b>Enter Your Details (See Result Here ->)</b></h2>
+
+        {{ResumeForm.as_p}}
+<input class="btn3" type="submit" value="Add/Delete">
+    </form>
+    {{b}}
+
+</div><br>&nbsp;&nbsp;&nbsp;&nbsp;
+<img class="imga2" border="1px" src="{% static 'images/resumeexample.png' %}" height="1205" width="650"/>
+
+{% endblock %}

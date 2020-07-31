@@ -1,0 +1,8 @@
+input
+
+indeed              jobtype,location,skill,daysbeforeposed
+freshersworld       jobtitle,location,experience,degree,streamjobtype,dateofposting
+linkedin            jobtitle,location,experience,dateposted,jobtype
+monster             jobtitle,location,experience,skills,salary
+timesjobs           jobtitle,location,expeirence,daysbeforeposted
+shine-              jobtitle,location,experience,salary
