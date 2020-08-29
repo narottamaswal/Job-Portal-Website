@@ -827,7 +827,6 @@ def JobsForYou(request):
         'user': request.user,
         #'jobsearchform': jobsearchform,
     }
-    print("hii1312")
     return render(request, template_name='jobsforyou.html', context=context)
 
 
