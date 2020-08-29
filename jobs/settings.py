@@ -25,7 +25,7 @@ SECRET_KEY = '45dc=0#aalz0g5@e@9v40(bq)j7-mhzqw4-&qqb*x=7@ed0#h!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://jobsearchwebapp.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
