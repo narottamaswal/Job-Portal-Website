@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '45dc=0#aalz0g5@e@9v40(bq)j7-mhzqw4-&qqb*x=7@ed0#h!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://jobsearchwebapp.herokuapp.com/']
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'multiforloop',
     'crispy_forms',
-   # 'report_builder'
+    'report_builder'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    'path.to.AuthRequiredMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'jobs.urls'
@@ -153,8 +153,9 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 MEDIA_URL= '/media/'
-STATIC_ROOT =  '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #in settings.py
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SESSION_ENGIN = 'django.contrib.sessions.backends.cached_db'
 #LOGIN_REDIRECT_URL= 'success/'
