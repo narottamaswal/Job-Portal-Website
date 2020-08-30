@@ -970,7 +970,10 @@ def register(request):
             user = form.save(commit=True)
             user.is_active = True
             user.save()
+            print("current1")
             current_site = get_current_site(request)
+            print("current2")
+            print(current_site)
             mail_subject = 'Activate your account.'
             message = render_to_string('account_activation_email.html', {
                 'user': user,
