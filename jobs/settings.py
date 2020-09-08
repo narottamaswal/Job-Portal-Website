@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'jobs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd5pnigrcvng5nh',
         'USER': 'pamgvnpdjyotta',
         'PASSWORD': '0b9957d1caaf40c2f316126332fc3ee3d576b5af5e1a47ef05683ceabeb236dc',
