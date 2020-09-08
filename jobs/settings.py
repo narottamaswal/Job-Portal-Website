@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = '45dc=0#aalz0g5@e@9v40(bq)j7-mhzqw4-&qqb*x=7@ed0#h!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'jobsearchengine.herokuapp.com']
 
 
 # Application definition
@@ -85,11 +86,16 @@ WSGI_APPLICATION = 'jobs.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd5pnigrcvng5nh',
+        'USER': 'pamgvnpdjyotta',
+        'PASSWORD': '0b9957d1caaf40c2f316126332fc3ee3d576b5af5e1a47ef05683ceabeb236dc',
+        'HOST': 'ec2-54-86-57-171.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
 }
+
 
 # DATABASES = {
 #     'default': {
@@ -178,3 +184,5 @@ EMAIL_PORT = 587
 import os
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
