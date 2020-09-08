@@ -87,15 +87,14 @@ WSGI_APPLICATION = 'jobs.wsgi.application'
 
 DATABASES = {
     'default': {
-'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd5pnigrcvng5nh',
-        'USER': 'pamgvnpdjyotta',
-        'PASSWORD': '0b9957d1caaf40c2f316126332fc3ee3d576b5af5e1a47ef05683ceabeb236dc',
-        'HOST': 'ec2-54-86-57-171.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 # DATABASES = {
 #     'default': {
@@ -184,5 +183,3 @@ EMAIL_PORT = 587
 import os
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
